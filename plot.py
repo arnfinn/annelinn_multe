@@ -41,16 +41,21 @@ for i in navn:
         lab = "mg/g DM"
         ymax = 0.65
         legloc = "upper right"
+        plotnr = "c"
     elif i == "TP":
-        lab = "mg of GA per gram DM"
+        lab = "mg GA/g DM"
         ymax = 32
+        plotnr = "a"
     elif i == "EA":
         lab = "mg/g DM"
         ymax = 11
+        plotnr = "b"
     elif i == "MS":
         lab = ""
         ymax = 5
         
+
+    plt.axvspan(2.5, 5.5, facecolor='grey', alpha=0.05)
     plt.xticks((0,1,2,3,4,5,6,7,8), navn, rotation=70)
 
 #    plt.xticks(x, labels, rotation='vertical')
@@ -59,7 +64,7 @@ for i in navn:
     plt.legend(loc = legloc)
     plt.ylim(ymin=0, ymax = ymax)
     plt.ylabel(lab)
-    plt.annotate(i, (0,0), (160, 260), xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 22)
+    plt.annotate(plotnr, (0,0), (20, 260), xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 22)
 #    plt.text(6,0,i,fontsize=22)
     if i == "TA":
         aarstall = 310
