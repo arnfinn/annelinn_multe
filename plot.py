@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import matplotlib.pyplot as plt
-import seaborn
-seaborn.set(style='ticks')
+#import seaborn
+#seaborn.set(style='ticks')
 
 SIZE = 14
 MEDIUM_SIZE = 16
@@ -35,20 +35,45 @@ for i in navn:
             n += 1
             plt.plot([0+(l-1)*3,1+(l-1)*3,2+(l-1)*3], datasett[m-1][l-1][n-1], color = col[n-1], label = k if l == 1 else "")
     navn = ["Early","Middle","Late","Early","Middle","Late","Early","Middle","Late"]
+
+    legloc = "lower left"
+    if i == "TA":
+        lab = ""
+        ymax = 0.6
+        legloc = "upper right"
+    elif i == "TP":
+        lab = "mg/g DM"
+        ymax = 30
+    elif i == "EA":
+        lab = "mg/g DM"
+        ymax = 10
+    elif i == "MS":
+        lab = ""
+        ymax = 5
+        
     plt.xticks((0,1,2,3,4,5,6,7,8), navn, rotation=70)
 
 #    plt.xticks(x, labels, rotation='vertical')
     plt.xlim(-0.5,8.5)
-    plt.legend(fancybox=True, shadow=True, loc = "lower left")
-    plt.ylim(ymin=0)
-    plt.ylabel(ylabel[m-1])
-    aarstall = 310
-    aarstall = -70
-    plt.annotate('2012', (0,0), (60, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
-    plt.annotate('2013', (0,0), (210, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
-    plt.annotate('2014', (0,0), (360, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
-    plt.savefig(i+".pdf", bbox_inches='tight')
+#    plt.legend(fancybox=True, shadow=True, loc = "lower left")
+    plt.legend(loc = legloc)
+    plt.ylim(ymin=0, ymax = ymax)
+    plt.ylabel(lab)
+    if i == "TA":
+        aarstall = 310
+        aarstall = -70
+        plt.annotate('2012', (0,0), (40, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
+        plt.annotate('2013', (0,0), (160, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
+        plt.annotate('2014', (0,0), (280, aarstall), xycoords='axes fraction', textcoords='offset points', va='top')
+    else:
+        plt.tick_params(
+            axis='x',          # changes apply to the x-axis
+            which='both',      # both major and minor ticks are affected
+            bottom='off',      # ticks along the bottom edge are off
+            top='off',         # ticks along the top edge are off
+            labelbottom='off') # labels along the bottom edge are off
 
+    plt.savefig(i+".pdf", bbox_inches='tight', transparent=True)
     plt.clf()
 
 
