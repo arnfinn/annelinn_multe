@@ -38,15 +38,15 @@ for i in navn:
 
     legloc = "lower left"
     if i == "TA":
-        lab = ""
-        ymax = 0.6
+        lab = "mg/g DM"
+        ymax = 0.65
         legloc = "upper right"
     elif i == "TP":
-        lab = "mg/g DM"
-        ymax = 30
+        lab = "mg of GA per gram DM"
+        ymax = 32
     elif i == "EA":
         lab = "mg/g DM"
-        ymax = 10
+        ymax = 11
     elif i == "MS":
         lab = ""
         ymax = 5
@@ -59,6 +59,8 @@ for i in navn:
     plt.legend(loc = legloc)
     plt.ylim(ymin=0, ymax = ymax)
     plt.ylabel(lab)
+    plt.annotate(i, (0,0), (160, 260), xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 22)
+#    plt.text(6,0,i,fontsize=22)
     if i == "TA":
         aarstall = 310
         aarstall = -70
