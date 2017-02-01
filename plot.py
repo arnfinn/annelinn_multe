@@ -41,16 +41,16 @@ for i in navn:
     legloc = "lower left"
     print(i)
     if i == "TA":
-        lab = "mg/g DM"
+        lab = "mg/g dw"
         ymax = 0.65
         legloc = "upper right"
         plotnr = "c"
     elif i == "TP":
-        lab = "mg GA/g DM"
+        lab = "mg GA/g dw"
         ymax = 32
         plotnr = "a"
     elif i == "EA":
-        lab = "mg/g DM"
+        lab = "mg/g dw"
         ymax = 11
         plotnr = "b"
     elif i == "MS":
